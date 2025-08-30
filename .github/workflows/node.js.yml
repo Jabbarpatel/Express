@@ -21,5 +21,9 @@ jobs:
       
       - name: Push to docker hub
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/express-server:0.0.1 .
-          docker push $${{secrets.DOCKER_USERNAME}}/express-server:0.0.1
+          IMAGE=docker.io/${{ secrets.DOCKER_USERNAME }}/express-server
+          VERSION=0.0.1
+          docker build -t $IMAGE:latest .
+          docker tag $IMAGE:latest $IMAGE:$VERSION
+          docker push $IMAGE:latest
+          docker push $IMAGE:$VERSION
