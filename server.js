@@ -6,6 +6,10 @@ const PORT = process.env.SERVER_PORT || 8085;
 
 const app = express();
 
+app.get("/",(req,res)=>{
+  res.send("This is first route")
+})
+
 app.listen(PORT, () => {
   console.log(`server is running on port ${PORT}`);
 });
